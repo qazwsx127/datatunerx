@@ -344,7 +344,7 @@ def main():
     input_datasets = {"train": train_dataset}
 
     if data_args.evaluation_path:
-        evaluation_dataset = ray.data.read_csv(data_args.train_path). \
+        evaluation_dataset = ray.data.read_csv(data_args.evaluation_path). \
             map_batches(rename_columns, fn_args=[columns_map], batch_format="pandas")
         print(evaluation_dataset)
         evaluation_dataset = preprocess_dataset(evaluation_dataset, tokenizer, training_args)
